@@ -1,5 +1,7 @@
 package com.redesocial.modelo;
 
+import com.redesocial.exception.UsuarioException;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,19 @@ public class Usuario {
     private List<Usuario> amigos;
     private List<Post> posts;
 
-    public Usuario(String nome, String username, String email, String senha, LocalDateTime dataCadastro, List<Usuario> amigos, List<Post> posts) {
+    public Usuario(String nome, String username, String email, String senha, LocalDateTime dataCadastro) {
+        if (nome == null || nome.isEmpty()) {
+            throw new UusarioException("O nome não pode ser nulo ou vazio.");
+        }
+        if (username == null || username.isEmpty()) {
+            throw new UusarioException("O username não pode ser nulo ou vazio.");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new UusarioException("O email não pode ser nulo ou vazio.");
+        }
+        if (senha == null || senha.isEmpty()) {
+            throw new UusarioException("A senha não pode ser nula ou vazia.");
+        }
         this.nome = nome;
         this.username = username;
         this.email = email;
@@ -25,19 +39,25 @@ public class Usuario {
         this.posts = new ArrayList<>();
     }
 
-    public void adicionarAmigo(Usuario amigo) {
-        if(amigos != null && !amigos.contains(amigo)) {
-            amigos.add(amigo);
-            amigo.adicionarAmigo(this); // Adiciona reciprocamente
+        public void adicionarAmigo(Usuario amigo) {
+            if (amigo != null && !this.equals(amigo) && !amigos.contains(amigo)) {
+                amigos.add(amigo);
+                if (!amigo.getAmigos().contains(this)) {
+                    amigo.adicionarAmigo(this); // Adiciona reciprocamente
+                }
+            }
         }
-    }
-    public void removerAmigo(Usuario amigo) {
-        if(amigos.contains(amigo)) {
-            amigos.remove(amigo);
-            amigo.removerAmigo(this); // Remove reciprocamente
+
+        public void removerAmigo(Usuario amigo) {
+            if (amigo != null && amigos.contains(amigo)) {
+                amigos.remove(amigo);
+                if (amigo.getAmigos().contains(this)) {
+                    amigo.removerAmigo(this); // Remove reciprocamente
+                }
+            }
         }
-    }
-    public void adicionarPost(Post post) {
+
+        public void adicionarPost(Post post) {
         if(post != null && !posts.contains(post)) {
             posts.add(post);
         }
@@ -109,16 +129,20 @@ public class Usuario {
 
     @Override
     public String toString() {
+        String nomesAmigos = amigos.stream()
+                .map(Usuario::getNome)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("Nenhum amigo");
         return String.format(
-                "ID: %d | Nome: %s | Username: %s | Email: %s | Data de Cadastro: %s | Amigos: %d | Posts: %d",
+                "ID: %d | Nome: %s | Username: %s | Email: %s | Data de Cadastro: %s | Amigos: [%s] | Posts: %d",
                 id, nome, username, email,
                 dataCadastro != null ? dataCadastro.toString() : "N/A",
-                amigos != null ? amigos.size() : 0,
+                nomesAmigos,
                 posts != null ? posts.size() : 0
         );
     }
 
-    @Override
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
