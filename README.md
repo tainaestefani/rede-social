@@ -23,12 +23,6 @@ O sistema oferece:
 4. **Exceções Personalizadas:**
    - Mensagens claras para erros relacionados a posts, usuários e validações.
 
-## Tecnologias Utilizadas
-- **Java 8+**
-- **Coleções (List, ArrayList):** Para armazenar usuários, posts e comentários.
-- **Exceções Personalizadas:** Para controle de erros específicos.
-- **DateTime API:** Para registrar data e hora de ações.
-
 ## Estrutura do Projeto
 Organizado em pacotes para modularidade e clareza:
 ```
