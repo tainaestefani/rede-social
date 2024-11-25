@@ -1,7 +1,6 @@
 package com.redesocial.gerenciador;
 
 import com.redesocial.exception.PostException;
-import com.redesocial.exception.UsuarioException;
 import com.redesocial.exception.ValidacaoException;
 import com.redesocial.modelo.Comentario;
 import com.redesocial.modelo.Post;
