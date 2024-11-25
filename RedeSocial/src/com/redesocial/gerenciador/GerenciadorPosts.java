@@ -143,5 +143,4 @@ public class GerenciadorPosts {
             throw new ValidacaoException("ID do autor inválido");
         }
     }
-
 }
