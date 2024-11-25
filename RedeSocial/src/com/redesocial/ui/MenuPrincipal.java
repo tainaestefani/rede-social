@@ -16,14 +16,8 @@ import java.util.Scanner;
  * O menu permite que o usuário se registre, faça login ou encerre a aplicação.
  */
 public class MenuPrincipal {
-
-    // Gerenciador de usuários, responsável pelo controle de cadastro e autenticação.
     private final GerenciadorUsuarios gerenciadorUsuarios;
-
-    // Gerenciador de posts, responsável pelo gerenciamento das publicações.
     private final GerenciadorPosts gerenciadorPosts;
-
-    // Scanner para entrada de dados pelo usuário.
     private final Scanner scanner;
 
     /**
@@ -44,7 +38,7 @@ public class MenuPrincipal {
         boolean continuar = true; // Controle de loop do menu
 
         while (continuar) {
-            System.out.println("=== Menu Principal ===");
+            System.out.println("\n=== Menu Principal ===");
             System.out.println("1. Cadastrar \n2. Fazer Login \n3. Sair");
 
             int opcao = scanner.nextInt(); // Lê a opção escolhida pelo usuário
@@ -64,7 +58,7 @@ public class MenuPrincipal {
      * Inclui validação de entradas (nome, username, email e senha).
      */
     private void cadastrarUsuario() {
-        System.out.println("=== Cadastrar ===");
+        System.out.println("\n=== Cadastrar ===");
 
         // Validação para o nome do usuário
         Validador<String> validadorNome = nome -> {
@@ -141,7 +135,7 @@ public class MenuPrincipal {
      * Valida as credenciais e, se bem-sucedido, redireciona ao menu logado.
      */
     private void fazerLogin() {
-        System.out.println("=== Login ===");
+        System.out.println("\n=== Login ===");
         boolean logado = false; // Controle de loop para autenticação
 
         while (!logado) {

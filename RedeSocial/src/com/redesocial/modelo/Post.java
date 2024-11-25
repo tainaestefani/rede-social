@@ -10,12 +10,12 @@ import java.util.List;
  * Armazena informações como autor, conteúdo, data de publicação, curtidas e comentários.
  */
 public class Post {
-    private Integer id; // Identificador único do post
-    private Usuario autor; // Autor do post
-    private String conteudo; // Conteúdo do post
-    private LocalDateTime dataPublicacao; // Data e hora de publicação
-    private List<Usuario> curtidas; // Lista de usuários que curtiram o post
-    private List<Comentario> comentarios; // Lista de comentários no post
+    private Integer id;
+    private Usuario autor;
+    private String conteudo;
+    private LocalDateTime dataPublicacao;
+    private List<Usuario> curtidas;
+    private List<Comentario> comentarios;
 
     /**
      * Construtor da classe.

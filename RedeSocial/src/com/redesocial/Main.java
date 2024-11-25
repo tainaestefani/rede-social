@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("===== Rede Social =====\n"); // Exibe o título do sistema
+        System.out.println("===== Rede Social ====="); // Exibe o título do sistema
 
         try {
             // Instancia os gerenciadores de usuários e postagens

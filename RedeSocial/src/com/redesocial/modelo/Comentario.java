@@ -9,11 +9,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class Comentario {
 
-    private Integer id; // Identificador único do comentário
-    private Usuario autor; // Autor do comentário
-    private String conteudo; // Conteúdo textual do comentário
-    private LocalDateTime dataComentario; // Data e hora do comentário
-    private Post post; // Post ao qual o comentário está associado
+    private Integer id;
+    private Usuario autor;
+    private String conteudo;
+    private LocalDateTime dataComentario;
+    private Post post;
 
     /**
      * Construtor da classe Comentario.

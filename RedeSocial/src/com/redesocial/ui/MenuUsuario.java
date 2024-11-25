@@ -15,10 +15,10 @@ import java.util.Scanner;
  * Inclui funcionalidades como criação de posts, gerenciamento de amizades, e visualização do feed de notícias.
  */
 public class MenuUsuario {
-    private final Usuario usuario; // Usuário logado
-    private final GerenciadorUsuarios gerenciadorUsuarios; // Gerenciador para operações relacionadas aos usuários
-    private final GerenciadorPosts gerenciadorPosts; // Gerenciador para operações relacionadas às postagens
-    private final Scanner scanner; // Scanner para entrada de dados do usuário
+    private final Usuario usuario;
+    private final GerenciadorUsuarios gerenciadorUsuarios;
+    private final GerenciadorPosts gerenciadorPosts;
+    private final Scanner scanner;
 
     /**
      * Construtor da classe MenuUsuario.
@@ -42,14 +42,15 @@ public class MenuUsuario {
 
         while (continuar) {
             // Exibe opções do menu principal
-            System.out.println("=== Menu do Usuário ===");
+            System.out.println("\n=== Menu do Usuário ===");
             System.out.println("Bem-vindo, " + usuario.getNome());
             System.out.println("1. Criar Post");
             System.out.println("2. Ver Perfil");
-            System.out.println("3. Buscar Usuários");
-            System.out.println("4. Gerenciar Amigos");
-            System.out.println("5. Ver Feed de Notícias");
-            System.out.println("6. Logout");
+            System.out.println("3. Editar Perfil");
+            System.out.println("4. Buscar Usuários");
+            System.out.println("5. Gerenciar Amigos");
+            System.out.println("6. Ver Feed de Notícias");
+            System.out.println("7. Logout");
 
             int opcao = scanner.nextInt(); // Lê a opção escolhida pelo usuário
             scanner.nextLine(); // Consome a quebra de linha
@@ -58,10 +59,11 @@ public class MenuUsuario {
             switch (opcao) {
                 case 1 -> criarPost();
                 case 2 -> verPerfil();
-                case 3 -> buscarUsuarios();
-                case 4 -> gerenciarAmizades();
-                case 5 -> verFeedNoticias();
-                case 6 -> {
+                case 3 -> editarPerfil();
+                case 4 -> buscarUsuarios();
+                case 5 -> gerenciarAmizades();
+                case 6 -> verFeedNoticias();
+                case 7 -> {
                     System.out.println("Desconectando...");
                     continuar = false;
                 }
@@ -92,13 +94,58 @@ public class MenuUsuario {
      * Exibe o perfil do usuário logado, com informações como username e estatísticas.
      */
     private void verPerfil() {
-        System.out.println("=== Perfil de " + usuario.getNome() + " ===");
+        System.out.println("\n=== Perfil de " + usuario.getNome() + " ===");
         System.out.println("Username: " + usuario.getUsername());
         System.out.println("Email: " + usuario.getEmail());
         System.out.println("Data de Cadastro: " + usuario.getDataCadastro());
         System.out.println("Número de Amigos: " + usuario.getAmigos().size());
         System.out.println("Número de Posts: " + usuario.getPosts().size());
     }
+
+    private void editarPerfil() {
+        System.out.println("\n=== Editar Perfil ===");
+        System.out.println("Digite os novos dados (ou pressione ENTER para manter o valor atual):");
+
+        try {
+            // Nome
+            System.out.print("Nome [" + usuario.getNome() + "]: ");
+            String nome = new java.util.Scanner(System.in).nextLine();
+            if (!nome.trim().isEmpty()) {
+                usuario.setNome(nome);
+            }
+
+            // Username
+            System.out.print("Username [" + usuario.getUsername() + "]: ");
+            String username = new java.util.Scanner(System.in).nextLine();
+            if (!username.trim().isEmpty()) {
+                usuario.setUsername(username);
+            }
+
+            // Email
+            System.out.print("Email [" + usuario.getEmail() + "]: ");
+            String email = new java.util.Scanner(System.in).nextLine();
+            if (!email.trim().isEmpty()) {
+                usuario.setEmail(email);
+            }
+
+            // Senha
+            System.out.print("Senha [" + usuario.getSenha() + "]: ");
+            String senha = new java.util.Scanner(System.in).nextLine();
+            if (!senha.trim().isEmpty()) {
+                usuario.setSenha(senha);
+            }
+
+            // Atualiza o perfil no gerenciador
+            if (gerenciadorUsuarios.atualizar(usuario)) {
+                System.out.println("Perfil atualizado com sucesso!");
+            } else {
+                System.out.println("Não foi possível atualizar o perfil.");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar o perfil: " + e.getMessage());
+        }
+    }
+
 
     /**
      * Permite ao usuário buscar outros usuários pelo nome ou parte do nome.
@@ -121,7 +168,7 @@ public class MenuUsuario {
      * Permite ao usuário gerenciar sua lista de amigos.
      */
     private void gerenciarAmizades() {
-        System.out.println("=== Gerenciamento de Amigos ===");
+        System.out.println("\n=== Gerenciamento de Amigos ===");
         System.out.println("1. Adicionar Amigo");
         System.out.println("2. Remover Amigo");
         System.out.println("3. Voltar");
@@ -175,7 +222,7 @@ public class MenuUsuario {
      */
     private void verFeedNoticias() {
         try {
-            System.out.println("=== Feed de Notícias ===");
+            System.out.println("\n=== Feed de Notícias ===");
 
             // Filtra os posts de amigos ou do próprio usuário, ordenados pela data de publicação
             List<Post> posts = gerenciadorPosts.listarPosts().stream()

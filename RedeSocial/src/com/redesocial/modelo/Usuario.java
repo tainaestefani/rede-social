@@ -13,14 +13,14 @@ import java.util.Objects;
  * lista de amigos e lista de posts.
  */
 public class Usuario {
-    private Integer id; // Identificador único do usuário
-    private String nome; // Nome do usuário
-    private String username; // Nome de usuário único
-    private String email; // Endereço de email do usuário
-    private String senha; // Senha do usuário
-    private LocalDateTime dataCadastro; // Data e hora de cadastro
-    private List<Usuario> amigos; // Lista de amigos do usuário
-    private List<Post> posts; // Lista de posts feitos pelo usuário
+    private Integer id;
+    private String nome;
+    private String username;
+    private String email;
+    private String senha;
+    private LocalDateTime dataCadastro;
+    private List<Usuario> amigos;
+    private List<Post> posts;
 
     /**
      * Construtor da classe.
