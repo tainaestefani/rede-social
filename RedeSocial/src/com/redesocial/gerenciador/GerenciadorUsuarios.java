@@ -154,6 +154,10 @@ public class GerenciadorUsuarios {
         usuario2.removerAmigo(usuario1);
     }
 
+    public List<Usuario> listarUsuarios(){
+        return usuarios;
+    }
+
 
     private void validarUsuario(Usuario usuario) {
         if (usuario.getNome() == null || usuario.getNome().isEmpty()) {
