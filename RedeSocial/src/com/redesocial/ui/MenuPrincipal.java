@@ -40,6 +40,7 @@ public class MenuPrincipal {
         while (continuar) {
             System.out.println("\n=== Menu Principal ===");
             System.out.println("1. Cadastrar \n2. Fazer Login \n3. Sair");
+            System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt(); // Lê a opção escolhida pelo usuário
             scanner.nextLine(); // Limpa o buffer do scanner

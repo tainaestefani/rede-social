@@ -51,9 +51,10 @@ public class MenuUsuario {
             System.out.println("5. Gerenciar Amigos");
             System.out.println("6. Ver Feed de Notícias");
             System.out.println("7. Logout");
+            System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt(); // Lê a opção escolhida pelo usuário
-            scanner.nextLine(); // Consome a quebra de linha
+            scanner.nextLine(); // Limpa o buffer do scanner
 
             // Executa a funcionalidade correspondente à opção escolhida
             switch (opcao) {
@@ -102,6 +103,10 @@ public class MenuUsuario {
         System.out.println("Número de Posts: " + usuario.getPosts().size());
     }
 
+    /**
+     * Permite ao usuário editar seu perfil, incluindo nome, username, email e senha.
+     * O usuário pode optar por manter os valores atuais pressionando ENTER.
+     */
     private void editarPerfil() {
         System.out.println("\n=== Editar Perfil ===");
         System.out.println("Digite os novos dados (ou pressione ENTER para manter o valor atual):");
@@ -135,7 +140,7 @@ public class MenuUsuario {
                 usuario.setSenha(senha);
             }
 
-            // Atualiza o perfil no gerenciador
+            // Atualiza o perfil
             if (gerenciadorUsuarios.atualizar(usuario)) {
                 System.out.println("Perfil atualizado com sucesso!");
             } else {
@@ -145,7 +150,6 @@ public class MenuUsuario {
             System.out.println("Erro ao atualizar o perfil: " + e.getMessage());
         }
     }
-
 
     /**
      * Permite ao usuário buscar outros usuários pelo nome ou parte do nome.
