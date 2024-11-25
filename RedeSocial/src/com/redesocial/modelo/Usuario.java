@@ -7,16 +7,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Classe que representa um usuário na rede social.
+ * Armazena informações como nome, username, email, senha, data de cadastro,
+ * lista de amigos e lista de posts.
+ */
 public class Usuario {
-    private Integer id;
-    private String nome;
-    private String username;
-    private String email;
-    private String senha;
-    private LocalDateTime dataCadastro;
-    private List<Usuario> amigos;
-    private List<Post> posts;
+    private Integer id; // Identificador único do usuário
+    private String nome; // Nome do usuário
+    private String username; // Nome de usuário único
+    private String email; // Endereço de email do usuário
+    private String senha; // Senha do usuário
+    private LocalDateTime dataCadastro; // Data e hora de cadastro
+    private List<Usuario> amigos; // Lista de amigos do usuário
+    private List<Post> posts; // Lista de posts feitos pelo usuário
 
+    /**
+     * Construtor da classe.
+     * Inicializa os atributos obrigatórios e valida suas condições.
+     *
+     * @param nome          Nome do usuário.
+     * @param username      Nome de usuário único.
+     * @param email         Email do usuário.
+     * @param senha         Senha do usuário.
+     * @param dataCadastro  Data e hora de cadastro.
+     * @throws UsuarioException Se qualquer atributo obrigatório for nulo ou inválido.
+     */
     public Usuario(String nome, String username, String email, String senha, LocalDateTime dataCadastro) {
         if (nome == null || nome.isEmpty()) {
             throw new UsuarioException("O nome não pode ser nulo ou vazio.");
@@ -39,29 +55,49 @@ public class Usuario {
         this.posts = new ArrayList<>();
     }
 
-        public void adicionarAmigo(Usuario amigo) {
-            if (amigo != null && !this.equals(amigo) && !amigos.contains(amigo)) {
-                amigos.add(amigo);
-                if (!amigo.getAmigos().contains(this)) {
-                    amigo.adicionarAmigo(this); // Adiciona reciprocamente
-                }
+    /**
+     * Adiciona um amigo à lista de amigos do usuário.
+     * A adição é recíproca (o outro usuário também adiciona este como amigo).
+     *
+     * @param amigo Usuário a ser adicionado como amigo.
+     */
+    public void adicionarAmigo(Usuario amigo) {
+        if (amigo != null && !this.equals(amigo) && !amigos.contains(amigo)) {
+            amigos.add(amigo);
+            if (!amigo.getAmigos().contains(this)) {
+                amigo.adicionarAmigo(this); // Adiciona reciprocamente
             }
         }
+    }
 
-        public void removerAmigo(Usuario amigo) {
-            if (amigo != null && amigos.contains(amigo)) {
-                amigos.remove(amigo);
-                if (amigo.getAmigos().contains(this)) {
-                    amigo.removerAmigo(this); // Remove reciprocamente
-                }
+    /**
+     * Remove um amigo da lista de amigos do usuário.
+     * A remoção é recíproca (o outro usuário também remove este como amigo).
+     *
+     * @param amigo Usuário a ser removido da lista de amigos.
+     */
+    public void removerAmigo(Usuario amigo) {
+        if (amigo != null && amigos.contains(amigo)) {
+            amigos.remove(amigo);
+            if (amigo.getAmigos().contains(this)) {
+                amigo.removerAmigo(this); // Remove reciprocamente
             }
         }
+    }
 
-        public void adicionarPost(Post post) {
-        if(post != null && !posts.contains(post)) {
+    /**
+     * Adiciona um post à lista de posts do usuário.
+     * Verifica se o post já não está na lista antes de adicioná-lo.
+     *
+     * @param post Post a ser adicionado.
+     */
+    public void adicionarPost(Post post) {
+        if (post != null && !posts.contains(post)) {
             posts.add(post);
         }
     }
+
+    // Métodos getter e setter para manipulação dos atributos
 
     public Integer getId() {
         return id;
@@ -127,6 +163,12 @@ public class Usuario {
         this.posts = posts;
     }
 
+    /**
+     * Retorna uma representação em texto do objeto.
+     * Inclui informações básicas e o número de amigos e posts.
+     *
+     * @return String representando o objeto.
+     */
     @Override
     public String toString() {
         String nomesAmigos = amigos.stream()
@@ -142,7 +184,13 @@ public class Usuario {
         );
     }
 
-        @Override
+    /**
+     * Compara dois objetos `Usuario` baseando-se no ID.
+     *
+     * @param o Objeto a ser comparado.
+     * @return `true` se os IDs forem iguais, caso contrário `false`.
+     */
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -150,6 +198,11 @@ public class Usuario {
         return id.equals(usuario.id);
     }
 
+    /**
+     * Retorna o hash code do objeto, baseado no ID.
+     *
+     * @return Valor do hash code.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);

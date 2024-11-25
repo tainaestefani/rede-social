@@ -5,14 +5,29 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que representa um post na rede social.
+ * Armazena informações como autor, conteúdo, data de publicação, curtidas e comentários.
+ */
 public class Post {
-    private Integer id;
-    private Usuario autor;
-    private String conteudo;
-    private LocalDateTime dataPublicacao;
-    private List<Usuario> curtidas;
-    private List<Comentario> comentarios;
+    private Integer id; // Identificador único do post
+    private Usuario autor; // Autor do post
+    private String conteudo; // Conteúdo do post
+    private LocalDateTime dataPublicacao; // Data e hora de publicação
+    private List<Usuario> curtidas; // Lista de usuários que curtiram o post
+    private List<Comentario> comentarios; // Lista de comentários no post
 
+    /**
+     * Construtor da classe.
+     * Inicializa os atributos obrigatórios e as listas de curtidas e comentários.
+     *
+     * @param id              Identificador único do post.
+     * @param autor           Usuário autor do post.
+     * @param conteudo        Conteúdo textual do post.
+     * @param dataPublicacao  Data e hora da publicação.
+     * @param curtidas        Lista de usuários que curtiram o post (inicialmente vazia).
+     * @param comentarios     Lista de comentários no post (inicialmente vazia).
+     */
     public Post(Integer id, Usuario autor, String conteudo, LocalDateTime dataPublicacao, List<Usuario> curtidas, List<Comentario> comentarios) {
         this.id = id;
         this.autor = autor;
@@ -22,21 +37,43 @@ public class Post {
         this.comentarios = new ArrayList<>();
     }
 
+    /**
+     * Adiciona uma curtida ao post.
+     * Verifica se o usuário ainda não curtiu antes de adicionar.
+     *
+     * @param usuario Usuário que curtiu o post.
+     */
     public void adicionarCurtida(Usuario usuario) {
-        if(curtidas != null && !curtidas.contains(usuario)) {
+        if (curtidas != null && !curtidas.contains(usuario)) {
             curtidas.add(usuario);
         }
     }
+
+    /**
+     * Remove uma curtida do post.
+     * Verifica se o usuário já curtiu antes de remover.
+     *
+     * @param usuario Usuário que deseja remover a curtida.
+     */
     public void removerCurtida(Usuario usuario) {
-        if(curtidas.contains(usuario)) {
+        if (curtidas.contains(usuario)) {
             curtidas.remove(usuario);
         }
     }
+
+    /**
+     * Adiciona um comentário ao post.
+     * Verifica se o comentário ainda não está presente antes de adicioná-lo.
+     *
+     * @param comentario Comentário a ser adicionado.
+     */
     public void adicionarComentario(Comentario comentario) {
-        if(comentarios != null && !comentarios.contains(comentario)) {
+        if (comentarios != null && !comentarios.contains(comentario)) {
             comentarios.add(comentario);
         }
     }
+
+    // Métodos getter e setter para manipulação dos atributos
 
     public Integer getId() {
         return id;
@@ -86,9 +123,15 @@ public class Post {
         this.comentarios = comentarios;
     }
 
+    /**
+     * Retorna uma representação textual do objeto `Post`.
+     * Inclui informações sobre o autor, conteúdo, data de publicação, número de curtidas e comentários.
+     *
+     * @return String representando o post.
+     */
     @Override
     public String toString() {
-        return  "ID: " + id + "\n" +
+        return "ID: " + id + "\n" +
                 "Autor: " + autor.getNome() + " (" + autor.getUsername() + ")\n" +
                 "Conteúdo: " + conteudo + "\n" +
                 "Data de Publicação: " + dataPublicacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "\n" +
