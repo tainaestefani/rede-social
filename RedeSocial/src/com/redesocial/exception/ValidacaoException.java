@@ -8,7 +8,6 @@ public class ValidacaoException extends RuntimeException {
 
     /**
      * Construtor da exceção que recebe uma mensagem de erro.
-     *
      * @param mensagem A mensagem de erro a ser associada à exceção.
      */
     public ValidacaoException(String mensagem) {

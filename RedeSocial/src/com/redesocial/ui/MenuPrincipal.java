@@ -113,7 +113,6 @@ public class MenuPrincipal {
     /**
      * Lê uma entrada do usuário e aplica a validação fornecida.
      * Continua solicitando até que uma entrada válida seja fornecida.
-     *
      * @param mensagem  Mensagem a ser exibida ao usuário.
      * @param validador Validador aplicado à entrada.
      * @return Entrada válida fornecida pelo usuário.
@@ -164,7 +163,6 @@ public class MenuPrincipal {
 
     /**
      * Validador para o username.
-     *
      * @return Validador configurado para usernames.
      */
     private Validador<String> validadorUsername() {
@@ -177,7 +175,6 @@ public class MenuPrincipal {
 
     /**
      * Validador para a senha.
-     *
      * @return Validador configurado para senhas.
      */
     private Validador<String> validadorSenha() {
@@ -190,7 +187,6 @@ public class MenuPrincipal {
 
     /**
      * Redireciona o usuário autenticado para o menu de usuário logado.
-     *
      * @param usuario Usuário autenticado.
      */
     private void exibirMenuLogado(Usuario usuario) {
@@ -200,9 +196,8 @@ public class MenuPrincipal {
 
     /**
      * Realiza a autenticação do usuário verificando suas credenciais.
-     *
      * @param username Username fornecido.
-     * @param senha    Senha fornecida.
+     * @param senha Senha fornecida.
      * @return Usuário autenticado.
      * @throws ValidacaoException Se o username ou senha forem inválidos.
      */

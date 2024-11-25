@@ -26,11 +26,11 @@ public class Usuario {
      * Construtor da classe.
      * Inicializa os atributos obrigatórios e valida suas condições.
      *
-     * @param nome          Nome do usuário.
-     * @param username      Nome de usuário único.
-     * @param email         Email do usuário.
-     * @param senha         Senha do usuário.
-     * @param dataCadastro  Data e hora de cadastro.
+     * @param nome Nome do usuário.
+     * @param username Nome de usuário único.
+     * @param email Email do usuário.
+     * @param senha Senha do usuário.
+     * @param dataCadastro Data e hora de cadastro.
      * @throws UsuarioException Se qualquer atributo obrigatório for nulo ou inválido.
      */
     public Usuario(String nome, String username, String email, String senha, LocalDateTime dataCadastro) {
@@ -58,7 +58,6 @@ public class Usuario {
     /**
      * Adiciona um amigo à lista de amigos do usuário.
      * A adição é recíproca (o outro usuário também adiciona este como amigo).
-     *
      * @param amigo Usuário a ser adicionado como amigo.
      */
     public void adicionarAmigo(Usuario amigo) {
@@ -73,7 +72,6 @@ public class Usuario {
     /**
      * Remove um amigo da lista de amigos do usuário.
      * A remoção é recíproca (o outro usuário também remove este como amigo).
-     *
      * @param amigo Usuário a ser removido da lista de amigos.
      */
     public void removerAmigo(Usuario amigo) {
@@ -88,7 +86,6 @@ public class Usuario {
     /**
      * Adiciona um post à lista de posts do usuário.
      * Verifica se o post já não está na lista antes de adicioná-lo.
-     *
      * @param post Post a ser adicionado.
      */
     public void adicionarPost(Post post) {
@@ -166,7 +163,6 @@ public class Usuario {
     /**
      * Retorna uma representação em texto do objeto.
      * Inclui informações básicas e o número de amigos e posts.
-     *
      * @return String representando o objeto.
      */
     @Override
@@ -186,7 +182,6 @@ public class Usuario {
 
     /**
      * Compara dois objetos `Usuario` baseando-se no ID.
-     *
      * @param o Objeto a ser comparado.
      * @return `true` se os IDs forem iguais, caso contrário `false`.
      */
@@ -200,7 +195,6 @@ public class Usuario {
 
     /**
      * Retorna o hash code do objeto, baseado no ID.
-     *
      * @return Valor do hash code.
      */
     @Override

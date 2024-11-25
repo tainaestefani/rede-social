@@ -27,7 +27,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Cadastra um novo usuário, validando suas informações e verificando se o email e username são únicos.
-     *
      * @param usuario O usuário a ser cadastrado.
      * @throws ValidacaoException Se o email ou username já estiverem em uso, ou se os dados do usuário forem inválidos.
      */
@@ -50,7 +49,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Busca um usuário pelo seu ID.
-     *
      * @param id O ID do usuário a ser buscado.
      * @return O usuário correspondente ao ID.
      * @throws UsuarioException Se o usuário não for encontrado.
@@ -64,7 +62,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Busca um usuário pelo seu nome de usuário (username).
-     *
      * @param username O username do usuário a ser buscado.
      * @return O usuário correspondente ao username.
      * @throws UsuarioException Se o usuário não for encontrado.
@@ -78,7 +75,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Busca usuários pelo nome, ignorando maiúsculas/minúsculas e permitindo pesquisa parcial.
-     *
      * @param nome O nome a ser pesquisado.
      * @return A lista de usuários cujo nome contenha o nome pesquisado.
      * @throws ValidacaoException Se o nome for vazio ou nulo.
@@ -95,7 +91,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Atualiza as informações de um usuário existente.
-     *
      * @param usuario O usuário com as novas informações.
      * @return true se a atualização for bem-sucedida, false caso contrário.
      * @throws UsuarioException Se o usuário não for encontrado ou se houver algum conflito de dados (email ou username duplicados).
@@ -137,7 +132,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Exclui um usuário pelo seu ID.
-     *
      * @param id O ID do usuário a ser excluído.
      * @return true se a exclusão for bem-sucedida, false caso contrário.
      * @throws UsuarioException Se o usuário não for encontrado.
@@ -162,7 +156,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Adiciona um amigo a um usuário, criando uma relação de amizade mútua.
-     *
      * @param idUsuario1 O ID do primeiro usuário.
      * @param idUsuario2 O ID do segundo usuário.
      * @throws UsuarioException Se algum dos usuários não for encontrado ou se os IDs forem inválidos.
@@ -193,7 +186,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Remove uma amizade entre dois usuários, desfazendo a relação mútua de amizade.
-     *
      * @param idUsuario1 O ID do primeiro usuário.
      * @param idUsuario2 O ID do segundo usuário.
      * @throws UsuarioException Se algum dos usuários não for encontrado ou se os IDs forem inválidos.
@@ -224,7 +216,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Lista todos os usuários registrados.
-     *
      * @return Uma lista de todos os usuários.
      */
     public List<Usuario> listarUsuarios(){
@@ -233,7 +224,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Valida as informações de um usuário antes de cadastrá-lo.
-     *
      * @param usuario O usuário a ser validado.
      * @throws ValidacaoException Se os dados do usuário forem inválidos.
      */
@@ -262,7 +252,6 @@ public class GerenciadorUsuarios {
 
     /**
      * Adiciona um post a um usuário.
-     *
      * @param usuario O usuário ao qual o post será adicionado.
      * @param post O post a ser adicionado.
      * @throws ValidacaoException Se o usuário ou post forem inválidos.

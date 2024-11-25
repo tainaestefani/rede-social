@@ -8,7 +8,6 @@ public class PostException extends RuntimeException {
 
     /**
      * Construtor da exceção que recebe uma mensagem de erro.
-     *
      * @param message Mensagem de erro a ser associada à exceção.
      */
     public PostException(String message) {

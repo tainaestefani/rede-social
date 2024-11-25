@@ -20,13 +20,12 @@ public class Post {
     /**
      * Construtor da classe.
      * Inicializa os atributos obrigatórios e as listas de curtidas e comentários.
-     *
-     * @param id              Identificador único do post.
-     * @param autor           Usuário autor do post.
-     * @param conteudo        Conteúdo textual do post.
-     * @param dataPublicacao  Data e hora da publicação.
-     * @param curtidas        Lista de usuários que curtiram o post (inicialmente vazia).
-     * @param comentarios     Lista de comentários no post (inicialmente vazia).
+     * @param id Identificador único do post.
+     * @param autor Usuário autor do post.
+     * @param conteudo Conteúdo textual do post.
+     * @param dataPublicacao Data e hora da publicação.
+     * @param curtidas Lista de usuários que curtiram o post (inicialmente vazia).
+     * @param comentarios Lista de comentários no post (inicialmente vazia).
      */
     public Post(Integer id, Usuario autor, String conteudo, LocalDateTime dataPublicacao, List<Usuario> curtidas, List<Comentario> comentarios) {
         this.id = id;
@@ -40,7 +39,6 @@ public class Post {
     /**
      * Adiciona uma curtida ao post.
      * Verifica se o usuário ainda não curtiu antes de adicionar.
-     *
      * @param usuario Usuário que curtiu o post.
      */
     public void adicionarCurtida(Usuario usuario) {
@@ -52,7 +50,6 @@ public class Post {
     /**
      * Remove uma curtida do post.
      * Verifica se o usuário já curtiu antes de remover.
-     *
      * @param usuario Usuário que deseja remover a curtida.
      */
     public void removerCurtida(Usuario usuario) {
@@ -64,7 +61,6 @@ public class Post {
     /**
      * Adiciona um comentário ao post.
      * Verifica se o comentário ainda não está presente antes de adicioná-lo.
-     *
      * @param comentario Comentário a ser adicionado.
      */
     public void adicionarComentario(Comentario comentario) {
@@ -126,7 +122,6 @@ public class Post {
     /**
      * Retorna uma representação textual do objeto `Post`.
      * Inclui informações sobre o autor, conteúdo, data de publicação, número de curtidas e comentários.
-     *
      * @return String representando o post.
      */
     @Override

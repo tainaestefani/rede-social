@@ -22,10 +22,9 @@ public class MenuUsuario {
 
     /**
      * Construtor da classe MenuUsuario.
-     *
-     * @param usuario            Usuário logado no sistema.
+     * @param usuario Usuário logado no sistema.
      * @param gerenciadorUsuarios Instância do gerenciador de usuários.
-     * @param gerenciadorPosts    Instância do gerenciador de postagens.
+     * @param gerenciadorPosts Instância do gerenciador de postagens.
      */
     public MenuUsuario(Usuario usuario, GerenciadorUsuarios gerenciadorUsuarios, GerenciadorPosts gerenciadorPosts) {
         this.usuario = usuario;
@@ -236,7 +235,7 @@ public class MenuUsuario {
 
             if (!posts.isEmpty()) {
                 posts.forEach(post -> System.out.println(post)); // Exibe os posts do feed
-                System.out.println("Digite o número do post para interagir ou 0 para voltar.");
+                System.out.println("Digite o número do post para interagir ou 0 para voltar: ");
                 int opcao = scanner.nextInt(); // Lê a interação do usuário
                 scanner.nextLine();
 
@@ -254,7 +253,6 @@ public class MenuUsuario {
 
     /**
      * Permite ao usuário interagir com uma postagem específica (curtir ou comentar).
-     *
      * @param id Identificador do post a ser interagido.
      */
     private void interagirPost(int id) {

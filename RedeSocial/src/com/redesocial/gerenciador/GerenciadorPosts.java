@@ -21,7 +21,6 @@ public class GerenciadorPosts {
 
     /**
      * Construtor da classe, que inicializa a lista de posts e configura o ID inicial.
-     *
      * @param gerenciadorUsuarios Instância do gerenciador de usuários, necessário para validar usuários nas interações.
      */
     public GerenciadorPosts(GerenciadorUsuarios gerenciadorUsuarios){
@@ -33,7 +32,6 @@ public class GerenciadorPosts {
 
     /**
      * Cria um novo post e o adiciona à lista de posts.
-     *
      * @param post O post a ser criado.
      * @throws ValidacaoException Se o post for nulo.
      */
@@ -47,7 +45,6 @@ public class GerenciadorPosts {
 
     /**
      * Lista todos os posts registrados.
-     *
      * @return Uma lista de todos os posts.
      */
     public List<Post> listarPosts(){
@@ -56,7 +53,6 @@ public class GerenciadorPosts {
 
     /**
      * Busca um post pelo seu ID.
-     *
      * @param id O ID do post a ser buscado.
      * @return O post correspondente ao ID.
      * @throws PostException Se o post não for encontrado.
@@ -70,7 +66,6 @@ public class GerenciadorPosts {
 
     /**
      * Lista os posts de um usuário específico, identificando pelo ID do usuário.
-     *
      * @param idUsuario O ID do usuário cujos posts serão listados.
      * @return A lista de posts do usuário.
      * @throws PostException Se o usuário não tiver posts ou o ID for inválido.
@@ -93,7 +88,6 @@ public class GerenciadorPosts {
 
     /**
      * Permite que um usuário curta um post, validando a ação.
-     *
      * @param idPost O ID do post a ser curtido.
      * @param idUsuario O ID do usuário que está curtindo o post.
      * @throws PostException Se o post ou o usuário forem inválidos, ou se o usuário já tiver curtido o post.
@@ -118,7 +112,6 @@ public class GerenciadorPosts {
 
     /**
      * Permite que um usuário descurta um post.
-     *
      * @param idPost O ID do post a ser descurtido.
      * @param idUsuario O ID do usuário que está descurtindo o post.
      * @throws PostException Se o post ou o usuário forem inválidos, ou se o usuário não tiver curtido o post.
@@ -143,7 +136,6 @@ public class GerenciadorPosts {
 
     /**
      * Permite adicionar um comentário a um post.
-     *
      * @param comentario O comentário a ser adicionado.
      * @throws ValidacaoException Se o comentário for nulo.
      * @throws PostException Se o post relacionado ao comentário for inválido.
@@ -168,7 +160,6 @@ public class GerenciadorPosts {
 
     /**
      * Exclui um post pelo seu ID.
-     *
      * @param id O ID do post a ser excluído.
      * @return True se o post foi excluído com sucesso, ou False caso contrário.
      * @throws PostException Se o post não for encontrado para exclusão.
@@ -186,7 +177,6 @@ public class GerenciadorPosts {
 
     /**
      * Método utilizado para validar um post antes de ser criado.
-     *
      * @param post O post a ser validado.
      * @throws ValidacaoException Se o post não passar nas validações.
      */

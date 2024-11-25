@@ -18,10 +18,9 @@ public class Comentario {
     /**
      * Construtor da classe Comentario.
      * Inicializa os atributos obrigatórios e define a data do comentário como o momento atual.
-     *
-     * @param autor    Usuário autor do comentário.
+     * @param autor Usuário autor do comentário.
      * @param conteudo Conteúdo textual do comentário.
-     * @param post     Post associado ao comentário.
+     * @param post Post associado ao comentário.
      */
     public Comentario(Usuario autor, String conteudo, Post post) {
         this.autor = autor;
@@ -75,7 +74,6 @@ public class Comentario {
     /**
      * Retorna uma representação textual do objeto `Comentario`.
      * Inclui informações sobre o autor, conteúdo, data e hora do comentário.
-     *
      * @return String representando o comentário.
      */
     @Override

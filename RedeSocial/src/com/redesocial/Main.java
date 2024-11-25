@@ -38,7 +38,6 @@ public class Main {
     /**
      * Método responsável por configurar dados iniciais no sistema.
      * Realiza operações como cadastro de usuários, criação de postagens e adição de interações.
-     *
      * @param gerenciadorPosts    Gerenciador de postagens.
      * @param gerenciadorUsuarios Gerenciador de usuários.
      */
