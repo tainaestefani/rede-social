@@ -1,7 +1,7 @@
 # 🌐 Sistema de Rede Social
 
 ## Descrição
-O sistema é uma rede social funcional, onde usuários podem se conectar, criar posts, comentar, curtir e gerenciar amizades. O projeto foi desenvolvido em **Java**, utilizando uma estrutura modular, boas práticas de programação e exceções personalizadas para validações robustas.
+Este projeto é uma rede social básica desenvolvida em Java, permitindo que usuários se cadastrem, façam login, publiquem posts, enviem e aceitem solicitações de amizade, curtam e comentem nas publicações. A interação com o sistema ocorre por meio de um menu no console.
 
 ## Funcionalidades
 O sistema oferece:
@@ -32,13 +32,12 @@ O sistema oferece:
 ## Estrutura do Projeto
 Organizado em pacotes para modularidade e clareza:
 ```
-├── com/
-│   └── loja/
-│       ├── exception/               # Exceções personalizadas
-│       ├── gerenciador/             # Classes de gerenciamento de produtos
-│       ├── modelo/                  # Modelo da classe Produto
-│       ├── ui/                      # Interface de usuário (MenuProdutos)
-│       └── Main                     # Classe principal
+  com.redesocial/
+     ├── modelo/            # Classes de modelo/entidades
+     ├── gerenciador/       # Classes de gerenciamento de dados
+     ├── ui/                # Interface com usuário (console)
+     ├── util/              # Classes utilitárias
+     └── exception/         # Exceções personalizadas
  ```
 
 ## Instruções de Execução
@@ -50,7 +49,13 @@ Organizado em pacotes para modularidade e clareza:
    
 2. **Abra o projeto na sua IDE favorita:**
    - Utilize IDEs como IntelliJ IDEA ou Eclipse.
-     
+
+3. **Configurar o JDK:**
+   - Certifique-se de ter o JDK 11 ou superior instalado.
+   - Configure o JDK na sua IDE:
+      - IntelliJ IDEA: File -> Project Structure -> Project -> Selecione o JDK.
+      - Eclipse: Window -> Preferences -> Java -> Installed JREs -> Selecione o JDK.
+
 3. **Compile e execute o projeto:**
    - Configure a classe `Main` como ponto de entrada e execute.
    - Ou use o terminal:
@@ -75,6 +80,9 @@ Organizado em pacotes para modularidade e clareza:
 
 4. **Uso de Streams:**
    - Streams foram utilizados para busca e filtragem eficiente de dados em listas.
+
+5. **Uso de Interface Funcional:**
+   - A interface `Validador` foi implementada para realizar validações de forma modular e configurável, promovendo flexibilidade no código.
 
 ## Autor
 <div align="left">
