@@ -19,16 +19,16 @@ public class Usuario {
 
     public Usuario(String nome, String username, String email, String senha, LocalDateTime dataCadastro) {
         if (nome == null || nome.isEmpty()) {
-            throw new UusarioException("O nome não pode ser nulo ou vazio.");
+            throw new UsuarioException("O nome não pode ser nulo ou vazio.");
         }
         if (username == null || username.isEmpty()) {
-            throw new UusarioException("O username não pode ser nulo ou vazio.");
+            throw new UsuarioException("O username não pode ser nulo ou vazio.");
         }
         if (email == null || email.isEmpty()) {
-            throw new UusarioException("O email não pode ser nulo ou vazio.");
+            throw new UsuarioException("O email não pode ser nulo ou vazio.");
         }
         if (senha == null || senha.isEmpty()) {
-            throw new UusarioException("A senha não pode ser nula ou vazia.");
+            throw new UsuarioException("A senha não pode ser nula ou vazia.");
         }
         this.nome = nome;
         this.username = username;

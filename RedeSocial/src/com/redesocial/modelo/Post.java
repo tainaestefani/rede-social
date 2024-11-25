@@ -1,6 +1,7 @@
 package com.redesocial.modelo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,14 +88,11 @@ public class Post {
 
     @Override
     public String toString() {
-        return String.format(
-                "Post { ID: %d | Autor: %s | Conteúdo: '%s' | Data de Publicação: %s | Curtidas: %d | Comentários: %d }",
-                id,
-                autor != null ? autor.getUsername() : "Autor desconhecido",
-                conteudo != null ? conteudo : "Conteúdo vazio",
-                dataPublicacao != null ? dataPublicacao.toString() : "N/A",
-                curtidas != null ? curtidas.size() : 0,
-                comentarios != null ? comentarios.size() : 0
-        );
+        return  "ID: " + id + "\n" +
+                "Autor: " + autor.getNome() + " (" + autor.getUsername() + ")\n" +
+                "Conteúdo: " + conteudo + "\n" +
+                "Data de Publicação: " + dataPublicacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "\n" +
+                "Curtidas: " + (curtidas != null ? curtidas.size() : 0) + "\n" +
+                "Comentários: " + (comentarios != null ? comentarios.size() : 0) + "\n";
     }
 }
