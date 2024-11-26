@@ -59,7 +59,17 @@ Organizado em pacotes para modularidade e clareza:
 
 ## Exemplos de Uso
 
-// Em construção 🚧
+- <h4>Cadastrar Usuário</h4>
+<img src="images/cadastrarUsuario.png" width="300"/>
+
+- <h4>Adicionar Amigo</h4>
+<img src="images/adicionarAmigo.png" width="350"/>
+
+- <h4>Criar Post</h4>
+<img src="images/criarPost.png" width="400"/>
+
+- <h4>Ver Feed de Notícias</h4>
+<img src="images/verFeedNoticias.png" width="400"/>
 
 ## Decisões de Implementação
 
