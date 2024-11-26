@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class Comentario {
 
     private Integer id;
+    private int geradorId = 1;
     private Usuario autor;
     private String conteudo;
     private LocalDateTime dataComentario;
@@ -23,6 +24,7 @@ public class Comentario {
      * @param post Post associado ao comentário.
      */
     public Comentario(Usuario autor, String conteudo, Post post) {
+        id = geradorId ++;
         this.autor = autor;
         this.conteudo = conteudo;
         this.dataComentario = LocalDateTime.now();
