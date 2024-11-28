@@ -60,16 +60,20 @@ Organizado em pacotes para modularidade e clareza:
 ## Exemplos de Uso
 
 - <h4>Cadastrar Usuário</h4>
-<img src="images/cadastrarUsuario.png" width="300"/>
+![image](https://github.com/user-attachments/assets/39a2e35e-9045-4d5a-aeb0-f7ce006533e4)
 
 - <h4>Adicionar Amigo</h4>
-<img src="images/adicionarAmigo.png" width="350"/>
+![image](https://github.com/user-attachments/assets/9fc07172-3ab2-4576-a3e3-0f0327eae98a)
 
 - <h4>Criar Post</h4>
-<img src="images/criarPost.png" width="400"/>
+![image](https://github.com/user-attachments/assets/7e1edf95-780a-4cbe-a247-292b31fbf997)
+
+- <h4>Buscar por Usuário</h4>
+![image](https://github.com/user-attachments/assets/36fe2258-25fb-4664-ab7d-fece8cea06db)
 
 - <h4>Ver Feed de Notícias</h4>
-<img src="images/verFeedNoticias.png" width="400"/>
+![image](https://github.com/user-attachments/assets/f33d1e36-7729-4902-9e89-70c90b459926)
+
 
 ## Decisões de Implementação
 
