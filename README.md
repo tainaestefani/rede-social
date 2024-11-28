@@ -8,7 +8,7 @@ Este projeto é uma rede social básica desenvolvida em Java, projetada para ofe
 1. **Gerenciamento de Usuários:**
    - Cadastro, atualização e exclusão de contas.
    - Busca de usuários por nome ou username.
-   - Gerenciamento de amizades: adicionar ou remover amigos.
+   - Gerenciamento de amizades: adicionar, remover e listar amigos.
 
 2. **Gerenciamento de Posts:**
    - Criação, edição e exclusão de posts.
@@ -27,6 +27,7 @@ Este projeto é uma rede social básica desenvolvida em Java, projetada para ofe
 4. **Menu de Usuários:**
    - Editar Perfil
    - Excluir Conta
+   - Excluir Post
    - Voltar
 
 ## Estrutura do Projeto
