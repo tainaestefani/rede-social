@@ -180,7 +180,7 @@ public class GerenciadorPosts {
      * @param post O post a ser validado.
      * @throws ValidacaoException Se o post não passar nas validações.
      */
-    private void validarPost(Post post) {
+    public void validarPost(Post post) {
         if (post.getConteudo().trim().isEmpty()) {
             throw new ValidacaoException("Conteúdo do post não pode ser vazio");
         }

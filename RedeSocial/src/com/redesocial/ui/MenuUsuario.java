@@ -1,6 +1,5 @@
 package com.redesocial.ui;
 
-import com.redesocial.exception.UsuarioException;
 import com.redesocial.exception.PostException;
 import com.redesocial.gerenciador.GerenciadorPosts;
 import com.redesocial.gerenciador.GerenciadorUsuarios;
@@ -25,6 +24,7 @@ public class MenuUsuario {
 
     /**
      * Construtor da classe MenuUsuario.
+     *
      * @param usuario Usuário logado no sistema.
      * @param gerenciadorUsuarios Instância do gerenciador de usuários.
      * @param gerenciadorPosts Instância do gerenciador de postagens.
@@ -86,10 +86,19 @@ public class MenuUsuario {
         Post novoPost = new Post(null, usuario, conteudo, LocalDateTime.now(), null, null);
 
         try {
-            gerenciadorPosts.criar(novoPost); // Adiciona o post ao gerenciador
+            // Chama a função de validação antes de tentar criar o post
+            gerenciadorPosts.validarPost(novoPost);
+
+            // Chama o método adicionarPost para associar o post ao usuário
+            gerenciadorUsuarios.adicionarPost(usuario, novoPost);
+
+            // Se não houver exceções, o post é adicionado ao gerenciador
+            gerenciadorPosts.criar(novoPost);
             System.out.println("Post criado com sucesso!");
+        } catch (PostException pe) {
+            System.out.println("Erro ao criar post: " + pe.getMessage());
         } catch (Exception e) {
-            System.out.println("Erro ao criar post: " + e.getMessage());
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
     }
 
@@ -259,14 +268,15 @@ public class MenuUsuario {
      * Exibe a lista de amigos do usuário logado.
      */
     private void listarAmigos() {
-    // Verifica se o usuário tem amigos
-    if (usuario.getAmigos().isEmpty()) {
-        System.out.println("Você ainda não tem amigos.");
-    } else {
-        System.out.println("Seus amigos:");
-        // Percorre a lista de amigos e imprime informações de forma legível
-        for (Usuario amigo : usuario.getAmigos()) {
-            System.out.println("- " + amigo.getNome() + " (" + amigo.getUsername() + ")");
+        // Verifica se o usuário tem amigos
+        if (usuario.getAmigos().isEmpty()) {
+            System.out.println("Você ainda não tem amigos.");
+        } else {
+            System.out.println("Seus amigos:");
+            // Percorre a lista de amigos e imprime informações de forma legível
+            for (Usuario amigo : usuario.getAmigos()) {
+                System.out.println("- " + amigo.getNome() + " (" + amigo.getUsername() + ")");
+            }
         }
     }
 
@@ -342,30 +352,34 @@ public class MenuUsuario {
     private void interagirPost(int id) {
         try {
             Post post = gerenciadorPosts.buscarPorId(id); // Busca o post pelo ID
+            if (post == null) {
+                System.out.println("Post não encontrado.");
+                return;
+            }
+
             System.out.println("Interagindo com o post #" + id);
             System.out.println("1. Curtir\n2. Descurtir\n3. Comentar\n4. Voltar");
             int opcao = scanner.nextInt(); // Lê a opção escolhida
             scanner.nextLine();
 
-            // Verifica se o usuário já curtiu o post
-            boolean usuarioCurtiu = post.getCurtidas().contains(usuario);
-
             // Executa a funcionalidade correspondente à interação
             switch (opcao) {
                 case 1 -> {
-                    if (usuarioCurtiu) {
-                        System.out.println("Você já curtiu este post.");
-                    } else {
-                        post.adicionarCurtida(usuario); // Adiciona uma curtida
+                    try {
+                        // Chama o método curtir e captura a exceção, se houver
+                        gerenciadorPosts.curtir(usuario.getId(), post.getId());
                         System.out.println("Você curtiu o post!");
+                    } catch (PostException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 case 2 -> {
-                    if (!usuarioCurtiu) {
-                        System.out.println("Você ainda não curtiu este post.");
-                    } else {
-                        post.removerCurtida(usuario); // Remove a curtida, se existir
-                        System.out.println("Você removeu sua curtida do post.");
+                    try {
+                        // Chama o método descurtir e captura a exceção, se houver
+                        gerenciadorPosts.descurtir(usuario.getId(), post.getId());
+                        System.out.println("Você descurtiu o post.");
+                    } catch (PostException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 case 3 -> {
@@ -414,22 +428,22 @@ public class MenuUsuario {
             System.out.println("\n=== Excluir Post ===");
             System.out.print("Digite o ID do post que deseja excluir: ");
             int postId = new java.util.Scanner(System.in).nextInt(); // Lê o ID do post a ser excluído
-    
+
             // Busca o post pelo ID
             Post post = gerenciadorPosts.buscarPorId(postId);
-    
+
             if (post == null) {
                 throw new PostException("Post não encontrado.");
             }
-    
+
             if (!post.getAutor().equals(usuario)) {
                 throw new PostException("Você não tem permissão para excluir este post.");
             }
-    
+
             // Solicita confirmação antes de excluir
             System.out.print("Tem certeza que deseja excluir este post? (1 - Sim / 2 - Não): ");
             int opcao = new java.util.Scanner(System.in).nextInt();
-    
+
             if (opcao == 1) {
                 boolean postExcluido = gerenciadorPosts.deletar(postId);
                 if (postExcluido) {
@@ -440,7 +454,7 @@ public class MenuUsuario {
             } else {
                 System.out.println("Operação cancelada.");
             }
-    
+
         } catch (PostException e) {
             System.out.println("Erro: " + e.getMessage());
         } catch (Exception e) {
