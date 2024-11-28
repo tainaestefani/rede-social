@@ -1,7 +1,7 @@
 # 🌐 Sistema de Rede Social
 
 ## Descrição
-Este projeto é uma rede social básica desenvolvida em Java, permitindo que usuários se cadastrem, façam login, publiquem posts, adicionem e removam amigos, curtam e comentem nas publicações. A interação com o sistema ocorre por meio de um menu no console.
+Este projeto é uma rede social básica desenvolvida em Java, projetada para oferecer funcionalidades essenciais de interação entre usuários. O sistema permite que os usuários realizem cadastro, login, publiquem posts, gerenciem amizades (adicionando ou removendo amigos), e interajam com posts por meio de curtidas, descurtidas e comentários. Toda a interação com o sistema é realizada por meio de um menu intuitivo exibido no console.
 
 ### Funcionalidades do Sistema
 
@@ -81,22 +81,28 @@ Organizado em pacotes para modularidade e clareza:
 ![image](https://github.com/user-attachments/assets/f33d1e36-7729-4902-9e89-70c90b459926)
 
 
-## Decisões de Implementação
+### Decisões de Implementação
 
-1. **Exceções Personalizadas:**
-   - Classes como `PostException`, `UsuarioException` e `ValidacaoException` ajudam a tornar os erros mais claros e específicos.
+1. **Exceções Personalizadas**
+   - Foram criadas classes como `PostException`, `UsuarioException` e `ValidacaoException` para identificar e tratar erros específicos de cada funcionalidade do sistema. Essa abordagem ajuda a isolar problemas e facilita o diagnóstico e a manutenção do código.
 
-2. **Validação Centralizada:**
-   - Validações foram encapsuladas para evitar redundâncias e melhorar a manutenção.
+2. **Validação Centralizada**
+   - Todas as validações críticas foram encapsuladas dentro de métodos ou classes dedicadas, eliminando redundâncias e assegurando que regras de negócio, como consistência dos dados e requisitos obrigatórios, sejam aplicadas de maneira uniforme.
 
-3. **Modularidade:**
-   - Cada classe possui uma responsabilidade clara, como gerenciamento de usuários (`GerenciadorUsuarios`) e de posts (`GerenciadorPosts`).
+3. **Modularidade**
+   - O sistema foi projetado com uma arquitetura modular. Cada classe possui uma única responsabilidade bem definida, como o gerenciamento de usuários (`GerenciadorUsuarios`) e de posts (`GerenciadorPosts`). Isso promove organização, clareza e facilita futuras expansões ou correções no sistema.
 
-4. **Uso de Streams:**
-   - Streams foram utilizados para busca e filtragem eficiente de dados em listas.
+4. **Uso de Streams**
+   - A API de Streams do Java foi amplamente utilizada para buscas e filtragens em coleções. Essa abordagem permitiu um código mais conciso, eficiente e legível, especialmente em operações como busca por usuários e listagem de posts.
 
-5. **Uso de Interface Funcional:**
-   - A interface `Validador` foi implementada para realizar validações de forma modular e configurável, promovendo flexibilidade no código.
+5. **Uso de Interface Funcional**
+   - A interface `Validador` foi implementada para criar validações de forma flexível e modular. Isso permite configurar diferentes validações sem necessidade de alterar o código principal, promovendo uma estrutura extensível e adaptável.
+
+6. **Organização do Código**
+   - Cada classe, exceção e interface está organizada em pacotes específicos (`modelo`, `gerenciador`, `ui`, `exception` e `util`), promovendo separação de responsabilidades e facilitando o entendimento geral da estrutura do projeto.
+
+7. **Manutenibilidade e Extensibilidade**
+   - A implementação foi feita com foco em facilitar a manutenção e futuras implementações. O uso de exceções personalizadas e validações modulares reduz o impacto de mudanças no sistema, tornando o código mais preparado para evoluir de acordo com novas necessidades.
 
 ## Autor
 <div align="left">
