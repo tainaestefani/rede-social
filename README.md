@@ -5,8 +5,6 @@ Este projeto é uma rede social básica desenvolvida em Java, permitindo que usu
 
 ### Funcionalidades do Sistema
 
-### Funcionalidades do Sistema
-
 1. **Gerenciamento de Usuários:**
    - Cadastro, atualização e exclusão de contas.
    - Busca de usuários por nome ou username.
@@ -30,13 +28,6 @@ Este projeto é uma rede social básica desenvolvida em Java, permitindo que usu
    - Editar Perfil
    - Excluir Conta
    - Voltar
-
-5. **Validações Robustas:**
-   - Controle de duplicidade de email e username.
-   - Restrições para posts e comentários (limites de caracteres, autor válido, etc.).
-
-6. **Exceções Personalizadas:**
-   - Mensagens claras para erros relacionados a posts, usuários e validações.
 
 ## Estrutura do Projeto
 Organizado em pacotes para modularidade e clareza:
@@ -74,19 +65,19 @@ Organizado em pacotes para modularidade e clareza:
 
 ## Exemplos de Uso
 
-- <h4>Cadastrar Usuário</h4>
+#### Cadastrar Usuário
 ![image](https://github.com/user-attachments/assets/39a2e35e-9045-4d5a-aeb0-f7ce006533e4)
 
-- <h4>Adicionar Amigo</h4>
+#### Adicionar Amigo
 ![image](https://github.com/user-attachments/assets/9fc07172-3ab2-4576-a3e3-0f0327eae98a)
 
-- <h4>Criar Post</h4>
+#### Criar Post
 ![image](https://github.com/user-attachments/assets/7e1edf95-780a-4cbe-a247-292b31fbf997)
 
-- <h4>Buscar por Usuário</h4>
+#### Buscar por Usuário
 ![image](https://github.com/user-attachments/assets/36fe2258-25fb-4664-ab7d-fece8cea06db)
 
-- <h4>Ver Feed de Notícias</h4>
+#### Ver Feed de Notícias
 ![image](https://github.com/user-attachments/assets/f33d1e36-7729-4902-9e89-70c90b459926)
 
 
