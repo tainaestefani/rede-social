@@ -1,6 +1,7 @@
 package com.redesocial.ui;
 
 import com.redesocial.exception.UsuarioException;
+import com.redesocial.exception.PostException;
 import com.redesocial.gerenciador.GerenciadorPosts;
 import com.redesocial.gerenciador.GerenciadorUsuarios;
 import com.redesocial.modelo.Comentario;
@@ -108,13 +109,15 @@ public class MenuUsuario {
 
         System.out.println("\n1. Editar perfil");
         System.out.println("2. Excluir conta");
-        System.out.println("3. Voltar");
+        System.out.println("3. Excluir post");
+        System.out.println("4. Voltar");
         System.out.print("Escolha uma opção: ");
         int opcao = new java.util.Scanner(System.in).nextInt();
 
         switch (opcao) {
             case 1 -> editarPerfil();
             case 2 -> excluirConta();
+            case 3 -> excluirPost();
             default -> System.out.println("Voltando ao menu principal...");
         }
     }
@@ -399,6 +402,49 @@ public class MenuUsuario {
             }
         } else {
             System.out.println("Operação cancelada.");
+        }
+    }
+
+    /**
+     * Exclui um post do usuário logado.
+     * Solicita confirmação antes de proceder com a exclusão e informa o resultado da operação.
+     */
+    private void excluirPost() {
+        try {
+            System.out.println("\n=== Excluir Post ===");
+            System.out.print("Digite o ID do post que deseja excluir: ");
+            int postId = new java.util.Scanner(System.in).nextInt(); // Lê o ID do post a ser excluído
+    
+            // Busca o post pelo ID
+            Post post = gerenciadorPosts.buscarPorId(postId);
+    
+            if (post == null) {
+                throw new PostException("Post não encontrado.");
+            }
+    
+            if (!post.getAutor().equals(usuario)) {
+                throw new PostException("Você não tem permissão para excluir este post.");
+            }
+    
+            // Solicita confirmação antes de excluir
+            System.out.print("Tem certeza que deseja excluir este post? (1 - Sim / 2 - Não): ");
+            int opcao = new java.util.Scanner(System.in).nextInt();
+    
+            if (opcao == 1) {
+                boolean postExcluido = gerenciadorPosts.deletar(postId);
+                if (postExcluido) {
+                    System.out.println("Post excluído com sucesso!");
+                } else {
+                    throw new PostException("Erro ao excluir post.");
+                }
+            } else {
+                System.out.println("Operação cancelada.");
+            }
+    
+        } catch (PostException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
     }
 }
