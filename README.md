@@ -67,19 +67,28 @@ Organizado em pacotes para modularidade e clareza:
 ## Exemplos de Uso
 
 #### Cadastrar Usuário
-![image](https://github.com/user-attachments/assets/39a2e35e-9045-4d5a-aeb0-f7ce006533e4)
+![image](https://github.com/user-attachments/assets/0e3f5b0d-e877-4765-9c99-99b54b7525c2)
+
+#### Ver Perfil
+![image](https://github.com/user-attachments/assets/07b90124-be82-4684-94eb-6a36c245432e)
 
 #### Adicionar Amigo
-![image](https://github.com/user-attachments/assets/9fc07172-3ab2-4576-a3e3-0f0327eae98a)
+![image](https://github.com/user-attachments/assets/0385b81d-fa25-4655-979b-cf5457e68ead)
 
 #### Criar Post
-![image](https://github.com/user-attachments/assets/7e1edf95-780a-4cbe-a247-292b31fbf997)
+![image](https://github.com/user-attachments/assets/e51c92cb-47da-448f-af06-8fa16e1280e8)
 
 #### Buscar por Usuário
-![image](https://github.com/user-attachments/assets/36fe2258-25fb-4664-ab7d-fece8cea06db)
+![image](https://github.com/user-attachments/assets/07e4ae37-ba2c-4eab-a46f-919f6fbc2d66)
 
 #### Ver Feed de Notícias
-![image](https://github.com/user-attachments/assets/f33d1e36-7729-4902-9e89-70c90b459926)
+![image](https://github.com/user-attachments/assets/dc20a5f2-5f2f-445e-a96c-ddd56790e125)
+
+#### Ver Posts por Usuário
+![image](https://github.com/user-attachments/assets/1916f0a7-eaf8-4690-9fd4-64e436fdf17d)
+
+#### Listar Usuários
+![image](https://github.com/user-attachments/assets/d194489c-39ec-4ee9-a5f0-e5d9003d713d)
 
 
 ### Decisões de Implementação
