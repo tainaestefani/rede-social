@@ -7,7 +7,6 @@ import com.redesocial.modelo.Usuario;
 import com.redesocial.util.Validador;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.Scanner;
 
 /**

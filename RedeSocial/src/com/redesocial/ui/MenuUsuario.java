@@ -1,6 +1,7 @@
 package com.redesocial.ui;
 
 import com.redesocial.exception.PostException;
+import com.redesocial.exception.UsuarioException;
 import com.redesocial.gerenciador.GerenciadorPosts;
 import com.redesocial.gerenciador.GerenciadorUsuarios;
 import com.redesocial.modelo.Comentario;
@@ -52,7 +53,8 @@ public class MenuUsuario {
             System.out.println("4. Gerenciar Amigos");
             System.out.println("5. Ver Feed de Notícias");
             System.out.println("6. Ver Posts por Usuário");
-            System.out.println("7. Logout");
+            System.out.println("7. Lista de Usuários");
+            System.out.println("8. Logout");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt(); // Lê a opção escolhida pelo usuário
@@ -66,7 +68,8 @@ public class MenuUsuario {
                 case 4 -> gerenciarAmizades();
                 case 5 -> verFeedNoticias();
                 case 6 -> listarPorUsuario();
-                case 7 -> {
+                case 7 -> listarUsuarios();
+                case 8 -> {
                     System.out.println("Desconectando...");
                     continuar = false;
                 }
@@ -342,6 +345,27 @@ public class MenuUsuario {
             } catch (Exception e) {
                 System.out.println("Erro: " + e.getMessage() + ". Tente novamente.");
             }
+        }
+    }
+
+    /**
+     * Lista todos os usuários cadastrados no sistema, com exceção caso não haja usuários.
+     * @throws UsuarioException Se não houver usuários cadastrados.
+     */
+    public void listarUsuarios() {
+        try {
+            List<Usuario> listaUsuarios = gerenciadorUsuarios.listarUsuarios();
+            if (listaUsuarios.isEmpty()) {
+                throw new UsuarioException("Nenhum usuário cadastrado.");
+            }
+
+            System.out.println("\n=== Lista de Usuários ===");
+            for (Usuario usuario : listaUsuarios) {
+                System.out.println("Usuário " + usuario.getId() + ": " + usuario.getNome() + " (" + usuario.getUsername() + ")");
+            }
+
+        } catch (UsuarioException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 
