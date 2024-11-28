@@ -3,24 +3,39 @@
 ## Descrição
 Este projeto é uma rede social básica desenvolvida em Java, permitindo que usuários se cadastrem, façam login, publiquem posts, adicionem e removam amigos, curtam e comentem nas publicações. A interação com o sistema ocorre por meio de um menu no console.
 
-## Funcionalidades
-O sistema oferece:
+### Funcionalidades do Sistema
+
+### Funcionalidades do Sistema
 
 1. **Gerenciamento de Usuários:**
-   - Cadastro, atualização e exclusão de usuários.
-   - Busca por ID, nome ou username.
-   - Gerenciamento de amizades (adicionar/remover amigos).
+   - Cadastro, atualização e exclusão de contas.
+   - Busca de usuários por nome ou username.
+   - Gerenciamento de amizades: adicionar ou remover amigos.
 
 2. **Gerenciamento de Posts:**
    - Criação, edição e exclusão de posts.
-   - Listagem de posts por usuário.
    - Interações: curtir, descurtir e comentar posts.
+   - Listagem de posts por usuário.
 
-3. **Validações Robustas:**
+3. **Menu Principal:**
+   - Criar Post
+   - Ver Perfil
+   - Buscar Usuários
+   - Gerenciar Amigos
+   - Ver Feed de Notícias
+   - Ver Posts por Usuário
+   - Logout
+
+4. **Menu de Usuários:**
+   - Editar Perfil
+   - Excluir Conta
+   - Voltar
+
+5. **Validações Robustas:**
    - Controle de duplicidade de email e username.
    - Restrições para posts e comentários (limites de caracteres, autor válido, etc.).
 
-4. **Exceções Personalizadas:**
+6. **Exceções Personalizadas:**
    - Mensagens claras para erros relacionados a posts, usuários e validações.
 
 ## Estrutura do Projeto
