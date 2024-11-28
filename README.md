@@ -1,7 +1,7 @@
 # 🌐 Sistema de Rede Social
 
 ## Descrição
-Este projeto é uma rede social básica desenvolvida em Java, projetada para oferecer funcionalidades essenciais de interação entre usuários. O sistema permite que os usuários realizem cadastro, login, publiquem posts, gerenciem amizades (adicionando ou removendo amigos), e interajam com posts por meio de curtidas, descurtidas e comentários. Toda a interação com o sistema é realizada por meio de um menu intuitivo exibido no console.
+Este projeto é uma rede social básica desenvolvida em Java, projetada para oferecer funcionalidades essenciais de interação entre usuários. O sistema permite que os usuários realizem cadastro, login, publiquem posts, gerenciem amizades (adicionando ou removendo amigos), busquem e listem usuários, e interajam com posts por meio de curtidas, descurtidas e comentários. Toda a interação com o sistema é realizada por meio de um menu intuitivo exibido no console.
 
 ### Funcionalidades do Sistema
 
