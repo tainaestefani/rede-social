@@ -22,6 +22,7 @@ Este projeto é uma rede social básica desenvolvida em Java, projetada para ofe
    - Gerenciar Amigos
    - Ver Feed de Notícias
    - Ver Posts por Usuário
+   - Lista de Usuários
    - Logout
 
 4. **Menu de Usuários:**
