@@ -327,15 +327,26 @@ public class MenuUsuario {
             int opcao = scanner.nextInt(); // Lê a opção escolhida
             scanner.nextLine();
 
+            // Verifica se o usuário já curtiu o post
+            boolean usuarioCurtiu = post.getCurtidas().contains(usuario);
+
             // Executa a funcionalidade correspondente à interação
             switch (opcao) {
                 case 1 -> {
-                    post.adicionarCurtida(usuario); // Adiciona uma curtida
-                    System.out.println("Você curtiu o post!");
+                    if (usuarioCurtiu) {
+                        System.out.println("Você já curtiu este post.");
+                    } else {
+                        post.adicionarCurtida(usuario); // Adiciona uma curtida
+                        System.out.println("Você curtiu o post!");
+                    }
                 }
                 case 2 -> {
-                    post.removerCurtida(usuario); // Remove a curtida, se existir
-                    System.out.println("Você removeu sua curtida do post.");
+                    if (!usuarioCurtiu) {
+                        System.out.println("Você ainda não curtiu este post.");
+                    } else {
+                        post.removerCurtida(usuario); // Remove a curtida, se existir
+                        System.out.println("Você removeu sua curtida do post.");
+                    }
                 }
                 case 3 -> {
                     System.out.print("Digite seu comentário: ");
