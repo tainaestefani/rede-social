@@ -7,7 +7,6 @@ import com.redesocial.modelo.Usuario;
 import com.redesocial.util.Validador;
 
 import java.time.LocalDateTime;
-import java.util.Base64;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -95,11 +94,8 @@ public class MenuPrincipal {
         String email = obterEntradaValida("Digite seu email: ", validadorEmail);
         String senha = obterEntradaValida("Digite sua senha: ", validadorSenha);
 
-        // Codifica a senha usando Base64
-        String senhaCodificada = Base64.getEncoder().encodeToString(senha.getBytes());
-
         // Cria um novo objeto do usuário
-        Usuario usuario = new Usuario(nome, username, email, senhaCodificada, LocalDateTime.now());
+        Usuario usuario = new Usuario(nome, username, email, senha, LocalDateTime.now());
 
         try {
             gerenciadorUsuarios.cadastrar(usuario); // Cadastra o usuário no sistema
@@ -212,12 +208,8 @@ public class MenuPrincipal {
 
         Usuario usuario = usuarioEncontrado.get(); // Obtém o usuário encontrado
 
-        // Decodifica a senha armazenada para comparação
-        String senhaArmazenada = usuario.getSenha();
-        String senhaDecodificada = new String(Base64.getDecoder().decode(senhaArmazenada));
-
         // Verifica se a senha fornecida corresponde à senha armazenada
-        if (!senhaDecodificada.equals(senha)) {
+        if (!usuario.getSenha().equals(senha)) {
             throw new ValidacaoException("Senha incorreta");
         }
 
