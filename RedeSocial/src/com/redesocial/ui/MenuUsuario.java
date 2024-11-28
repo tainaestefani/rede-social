@@ -204,7 +204,8 @@ public class MenuUsuario {
         System.out.println("\n=== Gerenciamento de Amigos ===");
         System.out.println("1. Adicionar Amigo");
         System.out.println("2. Remover Amigo");
-        System.out.println("3. Voltar");
+        System.out.println("3. Listar Amigos");
+        System.out.println("4. Voltar");
 
         int opcao = scanner.nextInt(); // Lê a opção escolhida
         scanner.nextLine(); // Consome a quebra de linha
@@ -213,7 +214,8 @@ public class MenuUsuario {
         switch (opcao) {
             case 1 -> adicionarAmigo();
             case 2 -> removerAmigo();
-            case 3 -> System.out.println("Voltando...");
+            case 3 -> listarAmigos();
+            case 4 -> System.out.println("Voltando...");
             default -> System.out.println("Opção inválida.");
         }
     }
@@ -247,6 +249,21 @@ public class MenuUsuario {
             System.out.println("Amigo removido com sucesso.");
         } else {
             System.out.println("Usuário não encontrado ou não é seu amigo.");
+        }
+    }
+
+    /**
+     * Exibe a lista de amigos do usuário logado.
+     */
+    private void listarAmigos() {
+    // Verifica se o usuário tem amigos
+    if (usuario.getAmigos().isEmpty()) {
+        System.out.println("Você ainda não tem amigos.");
+    } else {
+        System.out.println("Seus amigos:");
+        // Percorre a lista de amigos e imprime informações de forma legível
+        for (Usuario amigo : usuario.getAmigos()) {
+            System.out.println("- " + amigo.getNome() + " (" + amigo.getUsername() + ")");
         }
     }
 
