@@ -67,10 +67,15 @@ public class GerenciadorUsuarios {
      * @throws UsuarioException Se o usuário não for encontrado.
      */
     public Usuario buscarPorUsername(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            throw new ValidacaoException("Username não pode ser vazio.");
+        }
+
+        // Realiza a busca insensível a maiúsculas/minúsculas e retorna o único usuário que corresponde exatamente ao username
         return usuarios.stream()
-                .filter(u -> u.getUsername().equals(username))
-                .findFirst()
-                .orElseThrow(() -> new UsuarioException("Usuário com username " + username + " não encontrado."));
+                .filter(u -> u.getUsername().equalsIgnoreCase(username)) // Comparação exata
+                .findFirst() // Retorna o primeiro (único) encontrado
+                .orElseThrow(() -> new UsuarioException("Usuário com username '" + username + "' não encontrado.")); // Lança exceção caso não encontre
     }
 
     /**

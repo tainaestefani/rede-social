@@ -199,14 +199,12 @@ public class MenuPrincipal {
      */
     private Usuario autenticar(String username, String senha) {
         // Busca o usuário pelo username
-        Optional<Usuario> usuarioEncontrado = Optional.ofNullable(gerenciadorUsuarios.buscarPorUsername(username));
+        Usuario usuario = gerenciadorUsuarios.buscarPorUsername(username); // Não usa Optional aqui, pois o método retorna Usuario ou null
 
         // Verifica se o usuário foi encontrado
-        if (usuarioEncontrado.isEmpty()) {
+        if (usuario == null) {
             throw new ValidacaoException("Usuário com username " + username + " não existe");
         }
-
-        Usuario usuario = usuarioEncontrado.get(); // Obtém o usuário encontrado
 
         // Verifica se a senha fornecida corresponde à senha armazenada
         if (!usuario.getSenha().equals(senha)) {
